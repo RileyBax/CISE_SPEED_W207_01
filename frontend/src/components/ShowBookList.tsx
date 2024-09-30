@@ -87,8 +87,19 @@ function ShowBookList() {
                     <hr />
                 </div>
             </div>
-            <div
-                className='list'>{bookList}</div>
+            <table 
+            className="table table-hover table-dark table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope = "col">Title</th>
+                            <th scope = "col">Author</th>
+                            <th scope = "col">Journal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {bookList}
+                    </tbody>
+                </table>
         </div>
     </div>
     );
