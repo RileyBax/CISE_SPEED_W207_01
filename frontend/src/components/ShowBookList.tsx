@@ -81,8 +81,16 @@ function ShowBookList() {
                     )}
                 </div>
             </div>
-        </div>
-    );
-}
-
-export default ShowBookList;
+            <table 
+            className="table table-hover table-dark table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope = "col">Title</th>
+                            <th scope = "col">Author</th>
+                            <th scope = "col">Journal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {bookList}
+                    </tbody>
+                </table>
