@@ -27,4 +27,6 @@ export declare class BookService {
     getRecentBooks(): Promise<Book[]>;
     verifyBook(id: string): Promise<any>;
     getVerifiedBooks(): Promise<Book[]>;
+    markDetailsAsExtracted(id: string, extractedDetails: Partial<Book>): Promise<Book>;
+    extractDetails(id: string): Promise<Partial<Book>>;
 }

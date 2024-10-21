@@ -18,4 +18,3 @@ export class CreateBookDto {
     averageRating?: number;
     createdAt?: Date;
   }
-  

@@ -90,6 +90,10 @@ __decorate([
     (0, mongoose_1.Prop)({ default: false }),
     __metadata("design:type", Boolean)
 ], Book.prototype, "verified", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: Boolean, default: false }),
+    __metadata("design:type", Boolean)
+], Book.prototype, "detailsExtracted", void 0);
 exports.Book = Book = __decorate([
     (0, mongoose_1.Schema)()
 ], Book);

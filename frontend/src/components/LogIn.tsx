@@ -16,12 +16,21 @@ const LogIn = () => {
         // Dummy data for authentication
         const dummyData = {
             username: 'admin',
-            password: 'admin'
+            password: 'admin',
+            role: 'moderator',
+        };
+
+        const analystData = {
+            username: 'analyst',
+            password: 'analyst',
+            role: 'analyst',
         };
 
         // Check if the entered credentials match the dummy data
         if (username === dummyData.username && password === dummyData.password) {
             router.push('/moderator-page'); // Redirect to the Moderator page after successful login
+        } else if (username === analystData.username && password === analystData.password) {
+            router.push('/analyst-page'); // Redirect to the Analyst page after successful login
         } else {
             alert('Login failed. Please check your credentials.');
         }

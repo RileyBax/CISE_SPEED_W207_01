@@ -20,6 +20,7 @@ export declare class Book {
     averageRating: number;
     createdAt: Date;
     verified: boolean;
+    detailsExtracted: boolean;
 }
 export declare const BookSchema: import("mongoose").Schema<Book, import("mongoose").Model<Book, any, any, any, import("mongoose").Document<unknown, any, Book> & Book & {
     _id: import("mongoose").Types.ObjectId;

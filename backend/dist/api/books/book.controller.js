@@ -110,6 +110,18 @@ let BookController = class BookController {
             }, common_1.HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    async extractDetails(id) {
+        try {
+            const bookDetails = await this.bookService.extractDetails(id);
+            return bookDetails;
+        }
+        catch (error) {
+            throw new common_1.HttpException({
+                status: common_1.HttpStatus.NOT_FOUND,
+                error: `No detailed information found for book with id: ${id}`,
+            }, common_1.HttpStatus.NOT_FOUND);
+        }
+    }
     async findOne(id) {
         try {
             return this.bookService.findOne(id);
@@ -147,7 +159,7 @@ let BookController = class BookController {
     }
     async deleteBook(id) {
         try {
-            return await await this.bookService.delete(id);
+            return await this.bookService.delete(id);
         }
         catch {
             throw new common_1.HttpException({
@@ -234,6 +246,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], BookController.prototype, "findByYear", null);
+__decorate([
+    (0, common_1.Get)('/:id/details'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], BookController.prototype, "extractDetails", null);
 __decorate([
     (0, common_1.Get)('/:id'),
     __param(0, (0, common_1.Param)('id')),

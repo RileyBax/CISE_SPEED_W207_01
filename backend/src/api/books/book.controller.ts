@@ -12,14 +12,18 @@ import {
 import { BookService } from './book.service';
 import { CreateBookDto } from './create-book.dto';
 import { error } from 'console';
-import { Book } from './book.schema'; // Adjust the import path as needed
+import { Book } from './book.schema';
+
 @Controller('api/books')
 export class BookController {
     constructor(private readonly bookService: BookService) { }
+
     @Get('/test')
     test() {
         return this.bookService.test();
-    }// Get all books
+    }
+
+    // Get all books
     @Get('/')
     async findAll() {
         try {
@@ -35,10 +39,12 @@ export class BookController {
             );
         }
     }
+
     @Get('verified')
     async getVerifiedBooks() {
-      return this.bookService.getVerifiedBooks();
+        return this.bookService.getVerifiedBooks();
     }
+
     // Get a book by title
     @Get('/title/:title')
     async findByTitle(@Param('title') title: string) {
@@ -64,6 +70,7 @@ export class BookController {
             );
         }
     }
+
     // Get a book by author
     @Get('/authors/:authors')
     async findByAuthor(@Param('authors') author: string) {
@@ -89,6 +96,7 @@ export class BookController {
             );
         }
     }
+
     // Get a book by journal
     @Get('/journalName/:journalName')
     async findByJournal(@Param('journalName') journal: string) {
@@ -114,6 +122,7 @@ export class BookController {
             );
         }
     }
+
     // Get a book by year
     @Get('/publicationYear/:publicationYear')
     async findByYear(@Param('publicationYear') publicationYear: string) {
@@ -140,6 +149,22 @@ export class BookController {
         }
     }
 
+    // Get detailed information of a book by ID
+    @Get('/:id/details')
+    async extractDetails(@Param('id') id: string) {
+        try {
+            const bookDetails = await this.bookService.extractDetails(id);
+            return bookDetails;
+        } catch (error) {
+            throw new HttpException(
+                {
+                    status: HttpStatus.NOT_FOUND,
+                    error: `No detailed information found for book with id: ${id}`,
+                },
+                HttpStatus.NOT_FOUND,
+            );
+        }
+    }
 
     // Get one book via id
     @Get('/:id')
@@ -157,6 +182,7 @@ export class BookController {
             );
         }
     }
+
     // Create/add a book
     @Post('/')
     async addBook(@Body() createBookDto: CreateBookDto) {
@@ -174,6 +200,7 @@ export class BookController {
             );
         }
     }
+
     // Update a book
     @Put('/:id')
     async updateBook(
@@ -194,14 +221,14 @@ export class BookController {
             );
         }
     }
+
     // Delete a book via id
     @Delete('/:id')
     async deleteBook(@Param('id') id: string) {
         try {
-            return await await this.bookService.delete(id);
+            return await this.bookService.delete(id);
         } catch {
             throw new HttpException(
-
                 {
                     status: HttpStatus.NOT_FOUND,
                     error: 'No such a book',
@@ -254,21 +281,6 @@ export class BookController {
 
     @Post(':id/verify')
     async verifyBook(@Param('id') id: string) {
-      return this.bookService.verifyBook(id);
+        return this.bookService.verifyBook(id);
     }
-
-    
-    
-
-
-    
-   
-   
-  
-
-    
-
-    
-
-
 }

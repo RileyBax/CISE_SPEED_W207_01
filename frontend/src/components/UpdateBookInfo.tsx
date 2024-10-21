@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 function UpdateBookInfo() {
     const [book, setBook] = useState<Book>(DefaultEmptyBook);
-    const id = useParams<{ id: string }>().id;
+    const { id } = useParams<{ id: string }>() || {};
     const router = useRouter();
 
     useEffect(() => {

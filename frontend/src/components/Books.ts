@@ -1,4 +1,5 @@
 export type Book = {
+    analysisCompleted: any;
     _id?: string;
     title: string; // Required
     authors: string; // Required 
@@ -33,6 +34,6 @@ export type Book = {
     abstract: '',
     institution: '',
     updated_date: undefined,
-    imageCover: '', 
+    imageCover: '',
+    analysisCompleted: undefined
   };
-  

@@ -12,12 +12,12 @@ function ShowBookDetails() {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [ratingMessage, setRatingMessage] = useState<string>('');
-    const id = useParams<{ id: string }>().id;
+    const { id } = useParams<{ id: string }>() || {};
     const navigate = useRouter();
 
     useEffect(() => {
         setIsLoading(true);
-        fetch(process.env.NEXT_PUBLIC_URL + `api/books/${id}`)
+        fetch(process.env.NEXT_PUBLIC_URL + `api/books/${id}/details`) // Update the route here to match the backend
             .then((res) => res.json())
             .then((json) => {
                 setBook(json);
@@ -30,7 +30,7 @@ function ShowBookDetails() {
                 setError('Failed to load book details. Please try again later.');
                 setIsLoading(false);
             });
-    }, [id]);
+    }, [id]);    
 
     const handleRating = async (newRating: number) => {
         setUserRating(newRating);

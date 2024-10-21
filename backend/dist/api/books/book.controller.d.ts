@@ -11,6 +11,7 @@ export declare class BookController {
     findByAuthor(author: string): Promise<Book[]>;
     findByJournal(journal: string): Promise<Book[]>;
     findByYear(publicationYear: string): Promise<Book[]>;
+    extractDetails(id: string): Promise<Partial<Book>>;
     findOne(id: string): Promise<Book>;
     addBook(createBookDto: CreateBookDto): Promise<{
         message: string;

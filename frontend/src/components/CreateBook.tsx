@@ -244,7 +244,3 @@ const CreateBookComponent = () => {
 };
 
 export default CreateBookComponent;
-
-
-
-
